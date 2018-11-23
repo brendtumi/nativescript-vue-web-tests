@@ -59,7 +59,7 @@ Example: com.company.app`
       value: true
       }
     ],
-    default: false,
+    default: true,
     when: (answers) => {
       // prompt will only show up if isNativeOrDual === 'dual'
       return answers.isNativeOrDual === 'dual';
