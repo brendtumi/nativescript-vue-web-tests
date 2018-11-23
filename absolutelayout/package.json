@@ -1,0 +1,92 @@
+{
+  "name": "absolutelayout",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "build:android": "npm run setup-webpack-config && cross-env-shell VUE_CLI_MODE=production.android tns build android --bundle && npm run remove-webpack-config",
+    "build:ios": "npm run setup-webpack-config && cross-env-shell VUE_CLI_MODE=production.ios tns build ios --bundle && npm run remove-webpack-config",
+    "build:web": "vue-cli-service build --mode production.web",
+    "remove-webpack-config": "node ./node_modules/vue-cli-plugin-nativescript-vue/lib/scripts/webpack-maintenance post",
+    "serve:android": "npm run setup-webpack-config && cross-env-shell VUE_CLI_MODE=development.android tns run android --bundle",
+    "serve:ios": "npm run setup-webpack-config && cross-env-shell VUE_CLI_MODE=development.ios tns run ios --bundle",
+    "serve:web": "vue-cli-service serve --mode development.web",
+    "setup-webpack-config": "node ./node_modules/vue-cli-plugin-nativescript-vue/lib/scripts/webpack-maintenance pre"
+  },
+  "dependencies": {
+    "nativescript-vue": "^2.0.2",
+    "nativescript-vue-web": "^0.8.0",
+    "tns-core-modules": "^4.2.1",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.5",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-traverse": "^6.26.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "lint-staged": "^7.2.2",
+    "nativescript-dev-webpack": "^0.17.0",
+    "nativescript-vue-template-compiler": "^2.0.2",
+    "nativescript-worker-loader": "~0.9.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-cli-plugin-nativescript-vue": "file:../vue-cli-plugin-nativescript-vue",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "nativescript": {
+    "id": "org.nativescript.application",
+    "tns-ios": {
+      "version": "4.2.0"
+    },
+    "tns-android": {
+      "version": "4.2.0"
+    }
+  }
+}
