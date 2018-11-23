@@ -1,6 +1,5 @@
 #!/bin/sh
 
-rm -rf vue-cli-plugin-nativescript-vue
 git clone https://github.com/jawa-the-hutt/vue-cli-plugin-nativescript-vue.git -b combined
 cd vue-cli-plugin-nativescript-vue
 npm install
