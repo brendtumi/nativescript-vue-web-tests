@@ -1,5 +1,3 @@
-  
-  
 <template>
   <Page>
     <ActionBar :title="navbarTitle"/>
@@ -7,39 +5,35 @@
         <Button text="Home" @tap="goToHomePage" row="0"/>
         <Button text="About" @tap="goToAboutPage" row="1"/>
     </GridLayout>
-    <router-view />
   </Page>
 </template>
+
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+
+  import Home from '~/views/Home';
+  import About from '~/views/About';
 
   export default {
 
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
     data() {
       return {
-        navbarTitle: 'App.vue',
+        navbarTitle: 'App.native.vue',
       };
     },
     methods: {
       goToHomePage() {
-        this.$router.push('/');
+        this.$navigateTo(Home);
       },
       goToAboutPage() {
-        this.$router.push('about');
+        this.$navigateTo(About);
       },
     },
   };
+
 </script>
 
+
 <style lang="scss">
-  
   ActionBar {
     color: #42b983;
   }
