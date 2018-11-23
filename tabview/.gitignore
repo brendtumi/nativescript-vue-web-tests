@@ -19,8 +19,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-
-# NativeScript application
-hooks
-platforms
-./webpack.config.js
