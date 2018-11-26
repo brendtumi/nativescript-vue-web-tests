@@ -1,3 +1,5 @@
+  
+  
 <template>
   <Page>
     <StackLayout>
@@ -18,7 +20,35 @@
   </StackLayout>
   </Page>
 </template>
+<script>
+  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
 
+  export default {
+
+    components: {
+      Page,
+      ActionBar,
+      GridLayout,
+      // eslint-disable-next-line
+      Button,
+    },
+    data() {
+      return {
+        navbarTitle: 'App.vue',
+      };
+    },
+    methods: {
+      goToHomePage() {
+        this.$router.push('/');
+      },
+      goToAboutPage() {
+        this.$router.push('about');
+      },
+    },
+  };
+</script>
+
+<<<<<<< HEAD
 <script>
 import {
   Page,
@@ -65,3 +95,11 @@ export default {
   padding-left: 0;
 }
 </style>
+=======
+<style lang="scss">
+  
+  ActionBar {
+    color: #42b983;
+  }
+</style>
+>>>>>>> 2d19017a20fb152160ea3c6b09a609b7fd87f331
