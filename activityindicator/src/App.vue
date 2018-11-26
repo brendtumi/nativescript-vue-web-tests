@@ -1,46 +1,45 @@
   
   
 <template>
-  <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+<Page>
+  <StackLayout class="activityindicator">
+      <Button class="activityindicator__button" text="Change State" @tap="changeState" horizontalAlignment="center"></Button>
+      <ActivityIndicator :busy="busy" @busyChange="onBusyChanged"  horizontalAlignment="center"/>
+  </StackLayout>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+  import { Page,StackLayout, Button, ActivityIndicator } from 'nativescript-vue-web';
 
   export default {
 
     components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
+      StackLayout,
       Button,
+      ActivityIndicator,
+      Page
     },
     data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
+    return {
+      busy: true
+    };
+  },
+  methods: {
+    onBusyChanged(event) {
+      console.log("Changed: ", event);
     },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
+    changeState() {
+      this.busy = !this.busy;
+    }
+  }
   };
 </script>
 
-<style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
+<style lang="scss" scoped>
+.activityindicator {
+  &__button {
+    width: 100px;
+    margin-bottom: 50px;
   }
+}
 </style>
