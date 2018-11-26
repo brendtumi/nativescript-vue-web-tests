@@ -1,40 +1,38 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <TabView :selectedIndex="selectedIndex" @selectedIndexChanged="changed">
+      <TabViewItem title="Tab 1" webIcon="fa fa-eye">
+        <StackLayout>
+          <Label text="Content for Tab 1"/>
+          <Image src="~/assets/logo.png"/>
+        </StackLayout>
+      </TabViewItem>
+      <TabViewItem title="Tab 2">
+        <Label text="Content for Tab 2"/>
+      </TabViewItem>
+      <TabViewItem title="Tab 3">
+        <Label text="Content for Tab 3"/>
+      </TabViewItem>
+    </TabView>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
   import About from '~/views/About';
 
   export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
+  data() {
+    return {
+      selectedIndex: 0,
+    };
+  },
+  methods: {
+    changed: index => console.log('selectedIndexChanged', index), // eslint-disable-line
+  },
   };
 
 </script>
 
 
 <style lang="scss">
-  ActionBar {
-    color: #42b983;
-  }
 </style>

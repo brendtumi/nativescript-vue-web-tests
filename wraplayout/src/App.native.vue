@@ -1,40 +1,27 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <WrapLayout height="450" width="450" backgroundColor="#3c495e">
+      <Label text="first" class="wrapLayoutItem" backgroundColor="#43b883"/>
+      <Label text="second" class="wrapLayoutItem" backgroundColor="#1c6b48"/>
+      <Label text="third" class="wrapLayoutItem" backgroundColor="#289062"/>
+      <Label text="fourth" class="wrapLayoutItem" backgroundColor="#289062"/>
+    </WrapLayout>
   </Page>
 </template>
 
 <script>
 
-  import Home from '~/views/Home';
   import About from '~/views/About';
 
   export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
   };
 
 </script>
 
 
 <style lang="scss">
-  ActionBar {
-    color: #42b983;
+ .wrapLayoutItem {
+    width: 140px;
+    height: 140px;
   }
 </style>

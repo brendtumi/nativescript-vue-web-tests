@@ -1,46 +1,26 @@
-  
-  
-<template>
-  <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
-  </Page>
+  <template>
+  <div class="w-page">
+    <TextView v-model="textViewInput" :editable="true"/>
+  </div>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
-
+  import { TextView } from 'nativescript-vue-web';
   export default {
-
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
+  data() {
+    return {
+     textViewInput: 'default \n value',
+    }
+  },
+ components: {
+   TextView,  
+  },
   };
+
 </script>
 
 <style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
+  .w-page {
+    height: 100%;
+    width: 100%;
   }
 </style>

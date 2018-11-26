@@ -1,46 +1,28 @@
-  
-  
-<template>
+  <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+    <WrapLayout height="450" width="450" backgroundColor="#3c495e">
+      <Label text="first" class="wrapLayoutItem" backgroundColor="#43b883"/>
+      <Label text="second" class="wrapLayoutItem" backgroundColor="#1c6b48"/>
+      <Label text="third" class="wrapLayoutItem" backgroundColor="#289062"/>
+      <Label text="fourth" class="wrapLayoutItem" backgroundColor="#289062"/>
+    </WrapLayout>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+  import { WrapLayout, Label } from 'nativescript-vue-web';
 
   export default {
 
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
+  components: {
+    WrapLayout,
+    Label,
+  },
   };
 </script>
 
 <style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
+  .wrapLayoutItem {
+    width: 140px;
+    height: 140px;
   }
 </style>
