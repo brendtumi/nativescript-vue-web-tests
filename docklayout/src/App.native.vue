@@ -1,40 +1,32 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <StackLayout>
+    <DockLayout :stretchLastChild="false" class="dock">
+      <Label text="left" dock="left" width="40" backgroundColor="#43b883"/>
+      <Label text="top" dock="top" height="40" backgroundColor="#289062"/>
+      <Label text="right" dock="right" width="40" backgroundColor="#43b883"/>
+      <Label text="bottom" dock="bottom" height="40" backgroundColor="#289062"/>
+    </DockLayout>
+
+    <DockLayout :stretchLastChild="true" class="dock">
+      <Label text="left" dock="left" width="40" backgroundColor="#43b883"/>
+      <Label text="top" dock="top" height="40" backgroundColor="#289062"/>
+      <Label text="right" dock="right" width="40" backgroundColor="#43b883"/>
+      <Label text="bottom" dock="bottom" height="40" backgroundColor="#289062"/>
+      <Label text="center" backgroundColor="#1c6b48" />
+    </DockLayout>
+  </StackLayout>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
-  import About from '~/views/About';
-
-  export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
-  };
-
+export default {};
 </script>
-
-
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
-  }
+<style lang="scss" scoped>
+.dock {
+  width: 300px;
+  height: 150px;
+  margin-bottom: 30px;
+  background-color: #3c495e;
+}
 </style>

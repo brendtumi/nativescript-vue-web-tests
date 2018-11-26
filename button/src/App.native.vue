@@ -1,40 +1,18 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <StackLayout>
+    <Button text="Button" @tap="onButtonTap" horizontalAlignment="center" />
+  </StackLayout>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
-  import About from '~/views/About';
-
-  export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
-  };
-
+export default {
+  methods: {
+    onButtonTap() {
+      console.log("clicked");
+    }
+  }
+};
 </script>
 
-
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
-  }
-</style>

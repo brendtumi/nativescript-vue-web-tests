@@ -2,45 +2,57 @@
   
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+    <GridLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
+    <StackLayout row="0" col="0" class="stack-cell">
+      <Label text="none" class="label-text" />
+      <!-- >> image-stretch-none -->
+      <Img src="~/assets/logo.png" stretch="none" />
+      <!-- << image-stretch-none -->
+    </StackLayout>
+    <StackLayout row="1" col="0" class="stack-cell">
+      <Label text="fill" class="label-text" />
+      <!-- >> image-stretch-fill -->
+      <Img src="~/assets/logo.png" stretch="fill" />
+      <!-- << image-stretch-fill -->
+    </StackLayout>
+    <StackLayout row="0" col="1" class="stack-cell">
+      <Label text="aspectFill" class="label-text" />
+      <!-- >> image-stretch-aspect-fill -->
+      <Img src="~/assets/logo.png" stretch="aspectFill" />
+      <!-- << image-stretch-aspect-fill -->
+    </StackLayout>
+    <StackLayout row="1" col="1" class="stack-cell">
+      <Label text="aspectFit" class="label-text" />
+      <!-- >> image-stretch-aspect-fit -->
+      <Img src="~/assets/logo.png" stretch="aspectFit" />
+      <!-- << image-stretch-aspect-fit -->
+    </StackLayout>
+  </GridLayout>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+import { Img, StackLayout, GridLayout, Label } from "nativescript-vue-web";
 
-  export default {
-
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
-  };
+export default {
+  components: {
+    Img,
+    StackLayout,
+    GridLayout,
+    Label
+  }
+};
 </script>
 
 <style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
-  }
+.label-text {
+  text-align: center;
+  font-weight: bold;
+  background-color: rgba(166, 178, 181, 0.3);
+  padding: 5px auto;
+}
+
+.stack-cell {
+  border: solid 1px #a6b2b5;
+  margin: 10px;
+}
 </style>

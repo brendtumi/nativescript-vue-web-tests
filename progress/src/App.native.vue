@@ -1,40 +1,37 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+   <StackLayout class="progress">
+    <Label text="Default Progress" />
+    <Progress :value="currentProgress" @valueChange="progressChange" :maxValue="maxValueProgress" />
+    <Button @tap="incrementValue" text="Increment" class="progress__button" />
+  </StackLayout>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
-  import About from '~/views/About';
-
-  export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
+export default {
+  data() {
+    return {
+      currentProgress: 10,
+      maxValueProgress: 70
+    };
+  },
+  methods: {
+    progressChange: function(newValue, oldValue) {
+      alert("Progress Changed " + oldValue + " to " + newValue);
     },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
-  };
-
+    incrementValue() {
+      this.currentProgress += 10;
+    }
+  }
+};
 </script>
 
-
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
+<style lang="scss" scoped>
+.progress {
+  &__button {
+    width: 100px;
+    margin-top: 20px;
   }
+}
 </style>

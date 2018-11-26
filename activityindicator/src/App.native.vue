@@ -1,40 +1,41 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <StackLayout class="activityindicator">
+      <Button class="activityindicator__button" text="Change State" @tap="changeState" horizontalAlignment="center"></Button>
+      <ActivityIndicator :busy="busy" @busyChange="onBusyChanged"  horizontalAlignment="center"/>
+  </StackLayout>
   </Page>
 </template>
 
 <script>
 
-  import Home from '~/views/Home';
-  import About from '~/views/About';
+  
 
   export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
+data() {
+    return {
+      busy: true
+    };
+  },
+  methods: {
+    onBusyChanged(event) {
+      console.log("Changed: ", event);
     },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
+    changeState() {
+      this.busy = !this.busy;
+    }
+  }
+    
   };
 
 </script>
 
 
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
+<style lang="scss" scoped>
+.activityindicator {
+  &__button {
+    width: 100px;
+    margin-bottom: 50px;
   }
+}
 </style>

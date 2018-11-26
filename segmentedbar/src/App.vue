@@ -2,45 +2,21 @@
   
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+    <SegmentedBar>
+        <SegmentedBarItem title="Segment 1"/>
+        <SegmentedBarItem title="Segment 2"/>
+        <SegmentedBarItem title="Segment 3"/>
+    </SegmentedBar>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+import { Page, SegmentedBar, SegmentedBarItem } from "nativescript-vue-web";
 
-  export default {
-
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
-  };
-</script>
-
-<style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
+export default {
+  components: {
+    Page,
+    SegmentedBar,
+    SegmentedBarItem
   }
-</style>
+};
+</script>
