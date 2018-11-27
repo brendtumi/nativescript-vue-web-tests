@@ -1,40 +1,20 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <StackLayout>
+      <Button text="Show Alert Dialog" width="200" @tap="showAlertDialog"/>
+    </StackLayout>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
-  import About from '~/views/About';
-
   export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
     methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
+    showAlertDialog: function() {
+      alert("Your title", "Your message", "OK").then(() => {
+        console.log("Alert dialog closed.");
+      });
+    }
+  }
   };
-
 </script>
 
-
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
-  }
-</style>

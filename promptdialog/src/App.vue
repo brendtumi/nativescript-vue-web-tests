@@ -2,45 +2,33 @@
   
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+    <StackLayout>
+      <Button text="Show Prompt Dialog" width="200" @tap="showPromptDialog"/>
+    </StackLayout>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+  import { Page,  StackLayout, Button } from 'nativescript-vue-web';
 
   export default {
 
     components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
+      Page,  StackLayout, Button
     },
     methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
+    showPromptDialog: function() {
+      prompt(
+        "Your message to the user",
+        "Suggested user input",
+        "OK",
+        "Cancel"
+      ).then(result => {
+        if (result) {
+          console.log("Entered Text:", result.value);
+        }
+      });
+    }
+  }
   };
 </script>
 
-<style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
-  }
-</style>

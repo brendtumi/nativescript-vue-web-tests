@@ -1,40 +1,30 @@
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
+    <StackLayout>
+      <Button text="Show Login Dialog" width="200" @tap="showLoginDialog"/>
+    </StackLayout>
   </Page>
 </template>
 
 <script>
-
-  import Home from '~/views/Home';
-  import About from '~/views/About';
-
-  export default {
-
-    data() {
-      return {
-        navbarTitle: 'App.native.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$navigateTo(Home);
-      },
-      goToAboutPage() {
-        this.$navigateTo(About);
-      },
-    },
-  };
-
+export default {
+  methods: {
+    showLoginDialog: function() {
+      login({
+        title: "Your login title",
+        message: "Your login message",
+        okButtonText: "OK",
+        cancelButtonText: "Cancel",
+        userName: "Username field value",
+        password: "Password field value"
+      }).then(result => {
+        if (result) {
+          console.log("Username: ", result.userName);
+          console.log("Password: ", result.password);
+        }
+      });
+    }
+  }
+};
 </script>
 
-
-<style lang="scss">
-  ActionBar {
-    color: #42b983;
-  }
-</style>

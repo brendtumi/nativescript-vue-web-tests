@@ -2,45 +2,36 @@
   
 <template>
   <Page>
-    <ActionBar :title="navbarTitle"/>
-    <GridLayout rows="auto, auto">
-        <Button text="Home" @tap="goToHomePage" row="0"/>
-        <Button text="About" @tap="goToAboutPage" row="1"/>
-    </GridLayout>
-    <router-view />
+    <StackLayout>
+      <Button text="Show Login Dialog" width="200" @tap="showLoginDialog"/>
+    </StackLayout>
   </Page>
 </template>
 <script>
-  import { Page, ActionBar, GridLayout, Button } from 'nativescript-vue-web';
+import { Page, StackLayout, Button } from "nativescript-vue-web";
 
-  export default {
-
-    components: {
-      Page,
-      ActionBar,
-      GridLayout,
-      // eslint-disable-next-line
-      Button,
-    },
-    data() {
-      return {
-        navbarTitle: 'App.vue',
-      };
-    },
-    methods: {
-      goToHomePage() {
-        this.$router.push('/');
-      },
-      goToAboutPage() {
-        this.$router.push('about');
-      },
-    },
-  };
-</script>
-
-<style lang="scss">
-  
-  ActionBar {
-    color: #42b983;
+export default {
+  components: {
+    Page,
+    StackLayout,
+    Button
+  },
+  methods: {
+    showLoginDialog: function() {
+      login({
+        title: "Your login title",
+        message: "Your login message",
+        okButtonText: "OK",
+        cancelButtonText: "Cancel",
+        userName: "Username field value",
+        password: "Password field value"
+      }).then(result => {
+        if (result) {
+          console.log("Username: ", result.userName);
+          console.log("Password: ", result.password);
+        }
+      });
+    }
   }
-</style>
+};
+</script>
