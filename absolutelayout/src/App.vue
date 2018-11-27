@@ -14,8 +14,11 @@
 <script>
 import { Page, AbsoluteLayout, StackLayout, Label } from "nativescript-vue-web";
 export default {
-  components:{
-    Page, AbsoluteLayout, StackLayout, Label
+  components: {
+    Page,
+    AbsoluteLayout,
+    StackLayout,
+    Label
   }
 };
 </script>

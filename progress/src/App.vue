@@ -1,14 +1,24 @@
 <template>
   <Page>
     <StackLayout class="progress">
-    <Label text="Default Progress" />
-    <Progress :value="currentProgress" @valueChange="progressChange" :maxValue="maxValueProgress" />
-    <Button @tap="incrementValue" text="Increment" class="progress__button" />
-  </StackLayout>
+      <Label text="Default Progress"/>
+      <Progress
+        :value="currentProgress"
+        @valueChange="progressChange"
+        :maxValue="maxValueProgress"
+      />
+      <Button @tap="incrementValue" text="Increment" class="progress__button"/>
+    </StackLayout>
   </Page>
 </template>
 <script>
-import { Page, StackLayout, Progress, Label,Button } from "nativescript-vue-web";
+import {
+  Page,
+  StackLayout,
+  Progress,
+  Label,
+  Button
+} from "nativescript-vue-web";
 
 export default {
   components: {

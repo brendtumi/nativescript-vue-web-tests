@@ -8,13 +8,11 @@
 </template>
 
 <script>
-  export default {
-
-    data() {
-      return {
-        navbarTitle: 'About.android.vue',
-      };
-    },
-  };
-
+export default {
+  data() {
+    return {
+      navbarTitle: "About.android.vue"
+    };
+  }
+};
 </script>

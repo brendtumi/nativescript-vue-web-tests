@@ -1,6 +1,6 @@
-import Vue from 'nativescript-vue';
-import App from '~/App.native.vue';
-import store from './store';
+import Vue from "nativescript-vue";
+import App from "~/App.native.vue";
+import store from "./store";
 
 // Set the following to `true` to hide the logs created by nativescript-vue
 Vue.config.silent = false;
@@ -10,5 +10,5 @@ Vue.config.silent = false;
 
 new Vue({
   store,
-  render: (h) => h('frame', [h(App)])
+  render: h => h("frame", [h(App)])
 }).$start();

@@ -1,10 +1,14 @@
 <template>
   <Page>
-   <StackLayout class="progress">
-    <Label text="Default Progress" />
-    <Progress :value="currentProgress" @valueChange="progressChange" :maxValue="maxValueProgress" />
-    <Button @tap="incrementValue" text="Increment" class="progress__button" />
-  </StackLayout>
+    <StackLayout class="progress">
+      <Label text="Default Progress"/>
+      <Progress
+        :value="currentProgress"
+        @valueChange="progressChange"
+        :maxValue="maxValueProgress"
+      />
+      <Button @tap="incrementValue" text="Increment" class="progress__button"/>
+    </StackLayout>
   </Page>
 </template>
 
