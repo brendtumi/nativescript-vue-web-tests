@@ -1,5 +1,6 @@
 <template>
   <Page>
+    <StackLayout>
     <TextField
       v-model="textFieldInput"
       @textChange="textFieldOnChange"
@@ -10,6 +11,7 @@
       :editable="true"
       keyboardType="number"
     />
+    </StackLayout>
   </Page>
 </template>
 
